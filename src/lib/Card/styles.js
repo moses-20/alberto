@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "red",
     borderRadius: 5,
+    marginBottom: 10,
     elevation: 10,
     shadowOffset: 10,
     shadowColor: "silver",
