@@ -1,21 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, ScrollView } from "react-native";
 import Card from "lib/Card";
+import fruits from "data";
 
-function Home() {
+function Home({ navigation }) {
   return (
-    <View>
-      <Card />
-    </View>
+    <ScrollView style={{ paddingHorizontal: 20 }}>
+      {fruits.map((fruit) => (
+        <View key={fruit.id}>
+          <Card fruit={fruit} navigation={navigation} />
+        </View>
+      ))}
+    </ScrollView>
   );
 }
-
-const style = StyleSheet.create({
-  text: {
-    color: "green",
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-});
 
 export default Home;

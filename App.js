@@ -1,8 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
-import Home from "./src/screens/home";
+import AppStack from "routes/stack.route";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const [loadFonts] = useFonts({
@@ -14,17 +14,10 @@ export default function App() {
   if (!loadFonts) return null;
 
   return (
-    <View style={styles.container}>
-      <Home />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <AppStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
