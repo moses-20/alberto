@@ -1,8 +1,9 @@
 import React from "react";
 import { useFonts } from "expo-font";
-import AppStack from "routes/stack.route";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NativeBaseProvider } from "native-base";
+import AppDrawer from "routes/drawer.route";
 
 export default function App() {
   const [loadFonts] = useFonts({
@@ -16,7 +17,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <AppStack />
+        <NativeBaseProvider>
+          <AppDrawer />
+        </NativeBaseProvider>
       </NavigationContainer>
     </SafeAreaProvider>
   );
