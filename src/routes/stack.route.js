@@ -9,12 +9,16 @@ const Stack = createStackNavigator();
 
 function AppStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: "left",
+        headerBackTitleVisible: false,
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={Home}
         options={{
-          headerTitleAlign: "left",
           headerRight: () => <CreateButton />,
         }}
       />

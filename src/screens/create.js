@@ -38,6 +38,7 @@ export default function Create({ navigation }) {
     dispatch(fruitActions.add(newFruit.title, newFruit.para, newFruit.image));
     navigation.navigate("Home");
   };
+
   return (
     <Box px={15} pt={20}>
       <Text> Enter the details:</Text>

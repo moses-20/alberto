@@ -3,10 +3,14 @@ export const fruitTypes = {
   DELETE_FRUIT: "DELETE_FRUIT",
 };
 
+function genID() {
+  return Math.random() * 100;
+}
+
 export const fruitActions = {
   add: (title, para, img) => ({
     type: fruitTypes.ADD_FRUIT,
-    payload: { title, para, img },
+    payload: { id: genID, title, para, img },
   }),
   delete: (id) => ({ type: fruitTypes.DELETE_FRUIT, payload: id }),
 };
