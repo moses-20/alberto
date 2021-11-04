@@ -17,13 +17,19 @@ function AppStack() {
     >
       <Stack.Screen
         name="Home"
-        component={Home}
+        children={({ navigation }) => <Home navigation={navigation} />}
         options={{
           headerRight: () => <CreateButton />,
         }}
       />
-      <Stack.Screen name="Detail" component={Detail} />
-      <Stack.Screen name="Create" component={Create} />
+      <Stack.Screen
+        name="Detail"
+        children={({ navigation }) => <Detail navigation={navigation} />}
+      />
+      <Stack.Screen
+        name="Create"
+        children={({ navigation }) => <Create navigation={navigation} />}
+      />
     </Stack.Navigator>
   );
 }

@@ -4,7 +4,7 @@ export const fruitTypes = {
 };
 
 function genID() {
-  return Math.random() * 100;
+  return Math.random() * 121;
 }
 
 export const fruitActions = {
