@@ -7,7 +7,7 @@ import { Pressable } from "native-base";
 export default function Card({ fruit, navigation, handleCardPress }) {
   return (
     <View style={styles.card}>
-      <Pressable onPress={() => handleCardPress(fruit.id)}>
+      <Pressable onPress={() => handleCardPress(fruit._id)}>
         <Image source={images[fruit.img]} style={styles.cardImg} />
       </Pressable>
       <View style={styles.cardContent}>

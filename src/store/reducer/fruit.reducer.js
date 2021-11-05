@@ -5,7 +5,9 @@ export default function fruitReducer(state, action) {
     case fruitTypes.ADD_FRUIT:
       return state.push(action.payload);
     case fruitTypes.DELETE_FRUIT:
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter((item) => item._id !== action.payload);
+    case fruitTypes.SET_FRUITS:
+      return [...state, ...action.payload];
     default:
       return state;
   }
