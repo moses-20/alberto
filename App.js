@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NativeBaseProvider } from "native-base";
 import AppStack from "routes/stack.route";
+import FruitsContextProvider from "context/fruits.context";
 
 export default function App() {
   const [loadFonts] = useFonts({
@@ -18,7 +19,9 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <NativeBaseProvider>
-          <AppStack />
+          <FruitsContextProvider>
+            <AppStack />
+          </FruitsContextProvider>
         </NativeBaseProvider>
       </NavigationContainer>
     </SafeAreaProvider>

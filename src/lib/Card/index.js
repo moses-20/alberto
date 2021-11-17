@@ -4,10 +4,10 @@ import styles from "./styles";
 import { images } from "assets";
 import { Pressable } from "native-base";
 
-export default function Card({ fruit, navigation, handleCardPress }) {
+export default function Card({ fruit, navigation, deleteItem }) {
   return (
     <View style={styles.card}>
-      <Pressable onPress={() => handleCardPress(fruit.id)}>
+      <Pressable onPress={() => deleteItem(fruit._id)}>
         <Image source={images[fruit.img]} style={styles.cardImg} />
       </Pressable>
       <View style={styles.cardContent}>
@@ -19,8 +19,7 @@ export default function Card({ fruit, navigation, handleCardPress }) {
           style={styles.btn}
           onPress={() => {
             navigation.navigate("Detail", {
-              imageSrc: fruit.img,
-              id: fruit.id,
+              fruit: fruit,
             });
           }}
         />

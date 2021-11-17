@@ -24,7 +24,9 @@ function AppStack() {
       />
       <Stack.Screen
         name="Detail"
-        children={({ navigation }) => <Detail navigation={navigation} />}
+        children={({ navigation, route }) => (
+          <Detail navigation={navigation} route={route} />
+        )}
       />
       <Stack.Screen
         name="Create"

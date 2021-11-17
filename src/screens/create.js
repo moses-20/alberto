@@ -1,23 +1,22 @@
-import React, { useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Button, Input, Text, TextArea, useToast } from "native-base";
-import fruits from "store";
-import fruitReducer from "store/reducer/fruit.reducer";
+import Axios from "axios";
+import { FruitsContext } from "context/fruits.context";
 import { fruitActions } from "store/actions/fruit.actions";
 
 export default function Create({ navigation }) {
+  const { dispatch } = useContext(FruitsContext);
   const toast = useToast();
   const [newFruit, setNewFruit] = useState({
-    image: "add your image name here",
-    title: "add your title here",
-    para: "enter the description of your fruit here",
+    img: "",
+    title: "",
+    para: "",
   });
-
-  const [state, dispatch] = useReducer(fruitReducer, fruits);
 
   const handleImgChange = (value) => {
     setNewFruit((prev) => ({
       ...prev,
-      image: value,
+      img: value,
     }));
   };
 
@@ -35,8 +34,8 @@ export default function Create({ navigation }) {
     }));
   };
 
-  const handlePress = () => {
-    if (!newFruit.image || !newFruit.title || !newFruit.para) {
+  const handlePress = async () => {
+    if (!newFruit.img || !newFruit.title || !newFruit.para) {
       toast.show({
         title: "Oops!... ",
         status: "error",
@@ -47,7 +46,13 @@ export default function Create({ navigation }) {
       return;
     }
 
-    dispatch(fruitActions.add(newFruit.title, newFruit.para, newFruit.image));
+    let result = await Axios({
+      method: "POST",
+      url: "http://localhost:8000/fruits",
+      data: newFruit,
+    });
+
+    dispatch(fruitActions.update(result.data));
 
     setTimeout(() => {
       toast.show({
@@ -69,7 +74,7 @@ export default function Create({ navigation }) {
       <Text> Enter the details:</Text>
 
       <Input
-        value={newFruit.image}
+        value={newFruit.img}
         onChangeText={handleImgChange}
         variant="filled"
         placeholder="Image"
