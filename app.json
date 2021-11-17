@@ -1,11 +1,13 @@
 {
   "expo": {
-    "name": "myApp",
-    "slug": "myApp",
+    "name": "Alberto",
+    "slug": "Alberto",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "icon": "./src/assets/images/logo.png",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.armaebii.alberto"
+    }
   },
   "name": "myApp"
 }
